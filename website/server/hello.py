@@ -1,3 +1,6 @@
 import sys
 
-print("Hello from Python, " + sys.argv[1])
+# Takes first name and last name via command  
+# line arguments and then display them 
+print("Hello from python, " + sys.argv[1])
+# print("Last name: " + sys.argv[2])

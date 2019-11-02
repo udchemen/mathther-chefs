@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 const bodyParser = require('body-parser')
 const pino = require('express-pino-logger')()
 
@@ -14,19 +15,26 @@ app.get('/api/greeting', (req, res) => {
 
 app.get('/api/hello', callHello)
 
-app.listen(3001, () =>
-  console.log('Express server is running on localhost:3001')
-)
-
 function callHello (req, res) {
   var spawn = require('child_process').spawn
   var process = spawn('python', [
-    './hello.py',
-    req.query.firstname,
-    req.query.lastname
+    '-u',
+    path.join(__dirname, 'hello.py'),
+    req.query.firstname
   ])
 
   process.stdout.on('data', function (data) {
-    res.send(data.toString())
+    res.setHeader('Content-Type', 'application/json')
+    res.send(JSON.stringify({ data: data.toString('utf-8') }))
   })
 }
+
+function test (req, res) {
+  const name = req.query.name || 'World'
+  res.setHeader('Content-Type', 'application/json')
+  res.send(JSON.stringify({ greeting: `Hello ${name}!` }))
+}
+
+app.listen(3001, () =>
+  console.log('Express server is running on localhost:3001')
+)
