@@ -1,7 +1,7 @@
 #!/bin/bash
 
-x=$(python3 /Users/Lucas/Apps/Web/mathther-chefs/python/assets/lengthFinder/python/apriltag.py $1)
-# x=$(python3 apriltag.py $1)
+# x=$(python3 /Users/Lucas/Apps/Web/mathther-chefs/python/assets/lengthFinder/python/apriltag.py $1)
+x=$(python3 apriltag.py $1)
 
 
 # echo $x
