@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Card, Col, Form, Row, Spinner } from 'react-bootstrap'
 import './newFile.css'
 
-const NewFile = ({ updateList, setFilePath }) => {
+const NewFile = ({ updateList, setFilePath, setLabels, setLoading }) => {
   const [file, setFile] = useState(null)
   const [uploading, setUploading] = useState(false)
   //   const { append } = useContext(FilesContext)
@@ -46,22 +46,14 @@ const NewFile = ({ updateList, setFilePath }) => {
     setFile(data.get('file').name)
     readImage(input, res => setFilePath(res))
 
-    return (
-      fetch(`/api/analize`, {
-        method: 'post',
-        body: data
+    return fetch(`/api/analize`, {
+      method: 'post',
+      body: data
+    })
+      .then(res => res.json())
+      .then(res => {
+        setLabels(res)
       })
-        .then(res => res.json())
-        //   .then(res => JSON.parse(res))
-        .then(res => console.log(res))
-    )
-    //   .then(res => {
-    //     // append(res)
-    //     // setFile(null)
-    //     // setUploading(false)
-    //     // document.getElementById('file').value = ''
-    //   })
-    //   .catch(handleSubmitError)
   }
 
   function readImage (input, callback) {
