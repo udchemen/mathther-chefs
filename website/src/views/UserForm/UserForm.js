@@ -23,6 +23,7 @@ const Form = ({ onclick }) => {
           loading={loading}
           labels={labels}
           setAnalysisData={setAnalysisData}
+          analysisData={analysisData}
         />
       )}
     </Container>

@@ -20,4 +20,4 @@ data.append({
 	'surfaceArea' : SurfArea
 	})
 
-print(json.dumps(data,indent=2))
+print(json.dumps(data))

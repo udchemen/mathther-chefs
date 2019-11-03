@@ -12,11 +12,14 @@
 
 #### Importing libraries
 
-import os, sys, json
-import numpy as np
+import json
+import os
+import sys
+
 import matplotlib.pyplot as plt
-from scipy.optimize import fsolve
+import numpy as np
 import pandas as pd
+from scipy.optimize import fsolve
 
 meat_type = sys.argv[1]
 meat_type = meat_type.lower()
@@ -29,13 +32,13 @@ elif 'pork' in meat_type: meat_type = 'pork'
 elif 'fish' in meat_type: meat_type = 'fish'
 
 thickness = float(sys.argv[2])
-surface_area = float(sys.argv[3])
+surface_area = 0.015
 Ti = float(sys.argv[4])
 Ta = float(sys.argv[5])
 Tr = float(sys.argv[6])
 
 
-df = pd.read_csv('different_meats.csv',index_col = 'Food Type')
+df = pd.read_csv('/Users/Lucas/Apps/Web/mathther-chefs/python/different_meats.csv',index_col = 'Food Type')
 
 k = df.loc[meat_type, 'thermal_conductivity (W/mK)']
 rho = df.loc[meat_type, 'density (kg/m3)']
@@ -78,6 +81,13 @@ number_of_eigen_values=40
 
 def func_tan(x):
     return x*np.tan(x)-Bi 
+
+def sec_to_hours(seconds):
+    a=str(seconds//3600)
+    b=str((seconds%3600)//60)
+    c=str((seconds%3600)%60)
+    d=["{} hours {} mins {} seconds".format(a, b, c)]
+    return d
 
 guess=np.arange(0.1,10,(10-0.1)/number_of_eigen_values)
 
@@ -132,15 +142,12 @@ E=V*rho*cp*(Tr-Ti) #Total energy consumed
 #print("Energy in kWh is: ", E/1000/3600)
 
 
-data = []
-for case_num in range(0, 3):
-  data.append({
-        'Cooking Time in Hrs': cooking_time/3600,
-        'Energy in kJ': E/1000,
-        'Energy in kWh': E/1000/3600
-    })
+data = {
+        'time_h': sec_to_hours(cooking_time),
+        'energy_kJ': E/1000,
+        'energy_kWh': E/1000/3600
+    }
+  
 
 
-print(json.dumps(data, indent = 4))
-
-
+print(json.dumps(data))

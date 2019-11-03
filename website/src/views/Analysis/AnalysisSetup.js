@@ -7,7 +7,7 @@ thickness from 0.02 0.1
 */
 
 const AnalysisSetup = ({ labels, setAnalysisData }) => {
-  const [thickness, setThickness] = useState(0.2)
+  const [thickness, setThickness] = useState(0.05)
 
   function handleSubmit () {
     const form = document.getElementById('newFile')

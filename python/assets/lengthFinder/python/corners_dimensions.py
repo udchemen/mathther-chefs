@@ -1,10 +1,11 @@
 import os
 import sys
-import numpy as np 
+
 import cv2
-
-
+import numpy as np
 from PIL import Image
+
+import apriltag
 
 # credential_path = "/Users/Lucas/Apps/Web/mathther-chefs/python/config/google_client_secrets.json"
 dirname = os.path.dirname(__file__)
@@ -12,7 +13,7 @@ credential_path = os.path.join(dirname, '../../../config/google_client_secrets.j
 credential_path = os.path.abspath(credential_path)
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
-def corner_finder():
+def corner_finder(path):
     """Localize objects in the local image.
 
     Args:
@@ -20,7 +21,7 @@ def corner_finder():
     """
     #Find Image Size
 
-    path = sys.argv[1]
+    # path = sys.argv[1]
     im = Image.open(path)
 
     x_width = im.size[0]
@@ -65,10 +66,12 @@ def corner_finder():
     # cv2.line(imgBox,(int(x_coords[0]),int(y_coords[0])),(int(x_coords[1]),int(y_coords[1]),(0,0,0),15)
     # cv2.imshow('image', imgBox)
     # cv2.waitKey(0)
-    print(d1,d2)
+    # print(d1,d2)
     # SA = d1 * d2
     # print(SA)
     # return SA
+    f = open('/Users/Lucas/Apps/Web/mathther-chefs/python/assets/lengthFinder/python/lengthPerPixelInMetres.txt','r')
+    lengthperpixel = f.read()
 
-
-corner_finder()
+    SA = d1 * d2 *float(lengthperpixel) * float(lengthperpixel)
+    return SA

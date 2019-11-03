@@ -1,12 +1,14 @@
 import React from 'react'
 import { Col, Row, Spinner } from 'react-bootstrap'
+import AnalysisResults from './AnalysisResults'
 import AnalysisSetup from './AnalysisSetup'
 
 const Analysis = ({
   filePath,
   labels = [],
   loading = true,
-  setAnalysisData
+  setAnalysisData,
+  analysisData
 }) => {
   //   labels = [{ label: 'param1', value: 1 }, { label: 'param2', value: 1 }]
 
@@ -31,6 +33,7 @@ const Analysis = ({
           )}
         </Col>
       </Row>
+      {analysisData && <AnalysisResults analysisData={analysisData} />}
     </>
   )
 }

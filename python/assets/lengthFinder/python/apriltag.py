@@ -699,6 +699,7 @@ def main():
     lengthPerPixelInMetres = 0.019/lengthInPixel
     # print(lengthPerPixelInMetres)
 
+    numpy.savetxt('/Users/Lucas/Apps/Web/mathther-chefs/website/server/uploads/area.txt', numpy.array([lengthPerPixelInMetres]))
     return lengthPerPixelInMetres
 
 
@@ -708,5 +709,4 @@ def main():
 if __name__ == '__main__':
     x= main()
     print(x)
-    
     # return x
