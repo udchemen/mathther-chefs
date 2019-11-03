@@ -1,5 +1,5 @@
 #!/bin/bash
 
-x=$(python apriltag.py ../../../../../PhysicsHackathon/IMG_20191102_210124.jpg)
+x=$(python apriltag.py april_tag.jpg)
 
 echo $x
