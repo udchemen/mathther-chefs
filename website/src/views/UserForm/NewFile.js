@@ -48,7 +48,9 @@ const NewFile = ({ updateList }) => {
       method: 'post',
       body: data
     })
-    //   .then(res => res.json())
+      .then(res => res.text())
+      .then(res => JSON.parse(res))
+      .then(res => console.log(res))
     //   .then(res => {
     //     // append(res)
     //     // setFile(null)
