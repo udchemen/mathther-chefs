@@ -1,5 +1,8 @@
 import os
 import sys
+import numpy as np 
+import cv2
+
 
 from PIL import Image
 
@@ -36,6 +39,7 @@ def corner_finder():
     #print('Number of objects found: {}'.format(len(objects)))
     x_coords = []
     y_coords = []
+    coords_list =[]
     for object_ in objects:
        # print('Normalized bounding polygon vertices: ')
         for vertex in object_.bounding_poly.normalized_vertices:
@@ -43,12 +47,24 @@ def corner_finder():
             x_coords.append(vertex.x)
             y_coords.append(vertex.y)
 
+
+
     x_coords = [x_width * i for i in x_coords]
     y_coords = [y_height * i for i in y_coords]
+
+    for n in range(0,len(x_coords)):
+        coords_list.append([x_coords[n],y_coords[n]])
+
+    coords = open('coords.txt', 'w')
+    coords.writelines(["%s\n" %item for item in coords_list])
     #print(x_coords)
     #print(y_coords)
     d1 = ( (x_coords[1] - x_coords[0])** 2 + (y_coords[1] - y_coords[0])**2)**(0.5)
     d2 = ( (x_coords[2] - x_coords[1])** 2 + (y_coords[2] - y_coords[1])**2)**(0.5)
+    # imgBox = cv2.imread(sys.argv[1], cv2.IMREAD_COLOR)
+    # cv2.line(imgBox,(int(x_coords[0]),int(y_coords[0])),(int(x_coords[1]),int(y_coords[1]),(0,0,0),15)
+    # cv2.imshow('image', imgBox)
+    # cv2.waitKey(0)
     print(d1,d2)
     # SA = d1 * d2
     # print(SA)
