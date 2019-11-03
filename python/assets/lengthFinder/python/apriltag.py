@@ -680,19 +680,23 @@ def main():
     bottomRight = corner_2[1]
     topRight = corner_2[2]
     topLeft = corner_2[3]
+    # print(corner_2)
     # An average of the flat legnth is found
     flatLegnth =  ( ( bottomRight[0] - bottomLeft[0] )  +  ( topRight[0] - topLeft[0] ) )/2
+    # print(flatLegnth)
     # print(flatLegnth)
     # print(corners)
     # print(corner_2)
     # print(detections[0].tostring)
     vertLegnth =  ( ( topRight[1] - bottomRight[1] )  +  ( topLeft[1] - bottomLeft[1] ) )/2
     # print(vertLegnth)
+    # print(vertLegnth)
     # print(corners)
     # print(corner_2)
-    lengthInPixel = (flatLegnth + vertLegnth )/2
+    lengthInPixel = abs((flatLegnth + vertLegnth )/2)
+    # print(lengthInPixel)
     # Hardcoded size-3cm= 0.03m
-    lengthPerPixelInMetres = 0.03/lengthInPixel
+    lengthPerPixelInMetres = 0.019/lengthInPixel
     # print(lengthPerPixelInMetres)
 
     return lengthPerPixelInMetres
