@@ -29,7 +29,7 @@ labels = response_label.label_annotations
 
 #Parse only relevant foods
 
-foods = ['meat', 'beef', 'steak', 'chicken', 'fish']
+foods = ['beef', 'steak', 'chicken', 'fish']
 
 label_matches = []
 score_matches = []
