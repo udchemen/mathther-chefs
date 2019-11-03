@@ -21,7 +21,7 @@ cv2.line(img,(x3,y3) , (x4,y4)   ,(255,255,255),15)
 cv2.line(img,(x4,y4) , (x1,y1)   ,(255,255,255),15)
 # cv2.imshow('image', img)
 # cv2.waitKey(0)
-cv2.imwrite('boxedImage.jpg', img)
+cv2.imwrite('boxedImage.png', img)
 # cv2.destroyAllWindows()
 
 # int(sys.argv[1]),int(sys.argv[2])),(int(sys.argv[3]),int(sys.argv[4])
