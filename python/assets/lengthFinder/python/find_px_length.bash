@@ -52,7 +52,7 @@ bash boxGen.bash $1
 # # echo $coord4X
 # # echo $coord4Y
 
-# python testLine.py  $1
+# python testLinlse.py  $1
 
 
 # coord3=echo $(sed -n '3p' <coords.txt)
