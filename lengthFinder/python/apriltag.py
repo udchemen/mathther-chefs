@@ -629,13 +629,13 @@ def main():
             overlay = gray // 2 + dimg // 2
 
         num_detections = len(detections)
-        print('Detected {} tags in {}\n'.format(
-            num_detections, os.path.split(filename)[1]))
+        # print('Detected {} tags in {}\n'.format(
+            # num_detections, os.path.split(filename)[1]))
 
         for i, detection in enumerate(detections):
-            print( 'Detection {} of {}:'.format(i+1, num_detections))
-            print()
-            print(detection.tostring(indent=2))
+            # print( 'Detection {} of {}:'.format(i+1, num_detections))
+            # print()
+            # print(detection.tostring(indent=2))
 
             if options.camera_params is not None:
                 
@@ -655,7 +655,7 @@ def main():
                                              ('FinalError', e1)]),
                     indent=2))
                 
-            print()
+            # print()
 
 
         if options.debug_images:
@@ -693,7 +693,7 @@ def main():
     lengthInPixel = (flatLegnth + vertLegnth )/2
     # Hardcoded size-3cm= 0.03m
     lengthPerPixelInMetres = 0.03/lengthInPixel
-    print(lengthPerPixelInMetres)
+    # print(lengthPerPixelInMetres)
 
     return lengthPerPixelInMetres
 
