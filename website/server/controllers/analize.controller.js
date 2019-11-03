@@ -12,6 +12,9 @@ function callImageAnalizer (req, res, options) {
   ])
 
   process.stdout.on('data', function (data) {
+    // if label is certain, run simulation
+    // else, ask user what the label is
+
     res.setHeader('Content-Type', 'application/json')
     res.send(data.toString('utf-8'))
   })

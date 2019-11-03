@@ -2,10 +2,7 @@
 
 ## Getting Started
 
-
 Go to the `website/` directory and run `npm install` to install all the dependencies. You only need to do this once.
-
-
 
 Still on the `website/` directory, run the following to start the development server:
 

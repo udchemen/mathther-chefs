@@ -10,13 +10,13 @@ Original author: Isaac Dulin, Spring 2016
 Updates: Matt Zucker, Fall 2016
 
 """
-from __future__ import division
-from __future__ import print_function
+from __future__ import division, print_function
 
-import ctypes
 import collections
+import ctypes
 import os
 import re
+
 import numpy
 
 _HAVE_CV2 = False
@@ -706,4 +706,3 @@ if __name__ == '__main__':
     print(x)
     
     # return x
-

@@ -66,7 +66,6 @@ const NewFile = ({ updateList }) => {
     <>
       <Row className='mt-4'>
         <Col>
-          <h1 className='font-weight-light mb-4'>New file</h1>
           <Form id='newFile' onSubmit={handleSubmit}>
             <Card
               className={`new-file bg-transparent text-white ${
@@ -100,7 +99,7 @@ const NewFile = ({ updateList }) => {
             </Card>
             <Button
               variant='success'
-              className='mt-3 float-right'
+              className='mt-3 float-right d-none'
               type='submit'
               disabled={uploading || !file}
               style={{ width: '100px' }}
