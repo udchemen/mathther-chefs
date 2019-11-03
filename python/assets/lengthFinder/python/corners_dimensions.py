@@ -1,6 +1,6 @@
 import os
 from PIL import Image
-credential_path = "D:\Adam PC\Documents\Coding Stuffs\Physics Hackathon Montreal 2019\client_secrets.json"
+credential_path = "client_secrets.json"
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
 def corner_finder(path):
@@ -10,7 +10,7 @@ def corner_finder(path):
     path: The path to the local file.
     """
     #Find Image Size
-    im = Image.open('D:\Adam PC\Desktop\\raw steak.jpg')
+    im = Image.open('raw steak.jpg')
 
     x_width = im.size[0]
     y_height = im.size[1]
@@ -42,9 +42,9 @@ def corner_finder(path):
     d1 = ( (x_coords[1] - x_coords[0])** 2 + (y_coords[1] - y_coords[0])**2)**(0.5)
     d2 = ( (x_coords[2] - x_coords[1])** 2 + (y_coords[2] - y_coords[1])**2)**(0.5)
     print(d1,d2)
-    SA = d1 * d2
-    print(SA)
-    return
+    # SA = d1 * d2
+    # print(SA)
+    # return SA
 
 
-x = corner_finder('D:\Adam PC\Desktop\\raw steak.jpg')
+corner_finder('raw steak.jpg')
