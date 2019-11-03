@@ -16,7 +16,9 @@ def corner_finder():
     path: The path to the local file.
     """
     #Find Image Size
-    im = Image.open(sys.argv[1])
+
+    path = sys.argv[1]
+    im = Image.open(path)
 
     x_width = im.size[0]
     y_height = im.size[1]
