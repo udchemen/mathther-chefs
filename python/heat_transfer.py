@@ -83,9 +83,9 @@ def func_tan(x):
     return x*np.tan(x)-Bi 
 
 def sec_to_hours(seconds):
-    a=str(seconds//3600)
-    b=str((seconds%3600)//60)
-    c=str((seconds%3600)%60)
+    a=str(int(seconds//3600))
+    b=str(int((seconds%3600)//60))
+    c=str(int((seconds%3600)%60))
     d=["{} hours {} mins {} seconds".format(a, b, c)]
     return d
 
@@ -148,6 +148,7 @@ data = {
         'energy_kWh': E/1000/3600
     }
   
+
 
 
 print(json.dumps(data))

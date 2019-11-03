@@ -38,20 +38,20 @@ const runFindDimentions = filePath => {
   //       reject(data.toString('UTF-8'))
   //     })
   //   })
-  return new Promise((resolve, reject) => {
-    let spawn = require('child_process').spawn
-    let program = spawn('python3', [
-      path.join(PATH_PYTHON, '/assets/lengthFinder/python/get_dimention.py'),
-      filePath
-    ])
+    return new Promise((resolve, reject) => {
+      let spawn = require('child_process').spawn
+      let program = spawn('python3', [
+        path.join(PATH_PYTHON, '/assets/lengthFinder/python/get_dimention.py'),
+        filePath
+      ])
 
-    program.stdout.on('data', data => {
-      resolve(data.toString('UTF-8'))
+      program.stdout.on('data', data => {
+        resolve(data.toString('UTF-8'))
+      })
+      program.stderr.on('data', data => {
+        reject(data.toString('UTF-8'))
+      })
     })
-    program.stderr.on('data', data => {
-      reject(data.toString('UTF-8'))
-    })
-  })
 }
 
 const runHeatTransfer = params => {
