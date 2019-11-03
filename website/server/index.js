@@ -2,11 +2,13 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 const pino = require('express-pino-logger')()
+const fileUpload = require('express-fileupload')
 
 const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(pino)
+app.use(fileUpload())
 
 app.get('/api/greeting', greeting)
 app.get('/api/hello', callHello)
@@ -37,5 +39,6 @@ function greeting (req, res) {
 }
 
 function analize (req, res) {
-  console.log('body', req.body)
+  // move uploaded file to folder
+  req.files.file.mv(`${__dirname}/uploads/${req.files.file.name}`)
 }

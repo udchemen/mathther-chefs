@@ -11,7 +11,7 @@ const NewFile = ({ updateList }) => {
     e.preventDefault()
     console.log(e)
     setUploading(true)
-    const data = new FormData(e.target)
+    // const data = new FormData(e.target)
     // return fetch(`${URL_API}/file`, {
     //   method: 'post',
     //   headers: {
@@ -29,14 +29,14 @@ const NewFile = ({ updateList }) => {
     //   .catch(handleSubmitError)
   }
 
-  function handleSubmitError (err) {
-    console.log(err)
+  //   function handleSubmitError (err) {
+  //     console.log(err)
 
-    setFile(null)
-    setUploading(false)
-    document.getElementById('file').value = ''
-    alert('Unexpected error. Please try another file.')
-  }
+  //     setFile(null)
+  //     setUploading(false)
+  //     document.getElementById('file').value = ''
+  //     alert('Unexpected error. Please try another file.')
+  //   }
 
   function handleChange (e) {
     const form = document.getElementById('newFile')
@@ -46,11 +46,6 @@ const NewFile = ({ updateList }) => {
 
     return fetch(`/api/analize`, {
       method: 'post',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        // 'Content-Type': 'application/json'
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' // otherwise $_POST is empty
-      },
       body: data
     })
     //   .then(res => res.json())
