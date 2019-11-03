@@ -9,7 +9,7 @@ credential_path = os.path.join(dirname, '../../../config/google_client_secrets.j
 credential_path = os.path.abspath(credential_path)
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
-def corner_finder(path):
+def corner_finder():
     """Localize objects in the local image.
 
     Args:
@@ -53,4 +53,4 @@ def corner_finder(path):
     # return SA
 
 
-corner_finder('raw steak.jpg')
+corner_finder()
