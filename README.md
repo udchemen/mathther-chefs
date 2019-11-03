@@ -24,3 +24,4 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+https://docs.google.com/presentation/d/1RhZr0oT68hhrdSDBsHxSpqMzpNQiVWziS8E9_0KA5BY/edit?usp=sharing
