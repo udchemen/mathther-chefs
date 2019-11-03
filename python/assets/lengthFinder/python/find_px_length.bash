@@ -4,7 +4,7 @@ x=$(python3 apriltag.py $1)
 
 # echo $x
 
-y=$(python3 corners_dimensions.py)
+y=$(python3 corners_dimensions.py $1)
 
 # echo $y 
 len=$(cut -d' ' -f1 <<<"$y")
