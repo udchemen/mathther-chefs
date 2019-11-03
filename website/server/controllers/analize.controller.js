@@ -30,11 +30,7 @@ function callImageAnalizer (req, res, options) {
 }
 
 async function callHeatTransfer (req, res, options) {
-  try {
-    let dimentions = await runFindDimentions(options.filePath)
-  } catch (error) {
-    console.log('Error: ' + error)
-  }
+  let dimentions = await runFindDimentions(options.filePath)
   let temperatures = {
     Ti: 25,
     Ta: 180,
