@@ -1,4 +1,5 @@
 import os
+import sys
 
 from PIL import Image
 
@@ -15,7 +16,7 @@ def corner_finder(path):
     path: The path to the local file.
     """
     #Find Image Size
-    im = Image.open('raw steak.jpg')
+    im = Image.open(sys.argv[1])
 
     x_width = im.size[0]
     y_height = im.size[1]
