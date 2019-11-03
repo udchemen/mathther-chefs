@@ -11,7 +11,7 @@ function callImageAnalizer (req, res, options) {
   runImageAnalizer(options.filePath)
     .then(data => {
       const json = JSON.parse(data)
-      const thickness = req.body.thickness || 0.2
+      const thickness = req.body.thickness || 0.05
 
       options = {
         ...options,
@@ -30,11 +30,15 @@ function callImageAnalizer (req, res, options) {
 }
 
 async function callHeatTransfer (req, res, options) {
-  let dimentions = await runFindDimentions(options.filePath)
+  try {
+    let dimentions = await runFindDimentions(options.filePath)
+  } catch (error) {
+    console.log('Error: ' + error)
+  }
   let temperatures = {
-    Ti: 25 + 273.15,
-    Ta: 200 + 273.15,
-    Tr: 52 + 273.15
+    Ti: 25,
+    Ta: 180,
+    Tr: 65
   }
   const params = [
     options.label,
@@ -44,6 +48,8 @@ async function callHeatTransfer (req, res, options) {
     temperatures.Ta,
     temperatures.Tr
   ]
+
+  console.log(params)
 
   runHeatTransfer(params).then(data => {
     res.setHeader('Content-Type', 'application/json')
