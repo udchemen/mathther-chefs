@@ -12,13 +12,21 @@
 
 #### Importing libraries
 
-import os, sys
+import os, sys, json
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import fsolve
 import pandas as pd
 
 meat_type = sys.argv[1]
+meat_type = meat_type.lower()
+if 'beef' in meat_type: meat_type = 'beef'
+elif 'steak' in meat_type: meat_type = 'beef'
+elif 'chicken' in meat_type: meat_type = 'chicken'
+elif 'turkey' in meat_type: meat_type = 'turkey'
+elif 'lamb' in meat_type: meat_type = 'lamb'
+elif 'pork' in meat_type: meat_type = 'pork'
+elif 'fish' in meat_type: meat_type = 'fish'
 
 thickness = float(sys.argv[2])
 surface_area = float(sys.argv[3])
@@ -26,12 +34,13 @@ Ti = float(sys.argv[4])
 Ta = float(sys.argv[5])
 Tr = float(sys.argv[6])
 
-#df = pd.read_csv('different_meats.csv',index_col = 'Food Type')
-#print(df)
-#x=df.loc[meat_type].values['thermal_conductivity (W/mK)']
 
-#print(x)
+df = pd.read_csv('different_meats.csv',index_col = 'Food Type')
 
+k = df.loc[meat_type, 'thermal_conductivity (W/mK)']
+rho = df.loc[meat_type, 'density (kg/m3)']
+cp = df.loc[meat_type, 'specific_heat (J/kgK)']
+#print(k,rho,cp)
 
 
 
@@ -44,9 +53,9 @@ A=surface_area # Surface area(m^2)
 V=L*A   #Volume (m^3)
 #### 1.1 properties dependent on type of meat
 
-k=0.38 #Thermal conductivity of the meat(W/mK)
-rho=1019 # Density of the meat (kg/m^3)
-cp=3430 #Specific heat at constant pressure (J/kgK)
+k=k #Thermal conductivity of the meat(W/mK)
+rho=rho # Density of the meat (kg/m^3)
+cp=cp #Specific heat at constant pressure (J/kgK)
 
 #### 1.2 Temperature specification
 
@@ -103,7 +112,7 @@ for index, val in enumerate(theta):
     if np.absolute(val-theta_r) < 0.01:
         cooking_time=Fo[index]*tc    ###cooking time in seconds
 
-print("The cooking time is (hrs): ", cooking_time/3600)
+#print("The cooking time is (hrs): ", cooking_time/3600)
 
 ######### 4. Temperature in space and time #########
 theta_eta=np.zeros((len(Fo),len(x_star)))
@@ -119,7 +128,19 @@ theta_eta=np.array(theta_eta)
 
 ######## Energy calculation ######
 E=V*rho*cp*(Tr-Ti) #Total energy consumed
-print("Energy in kJ is: ", E/1000)
-print("Energy in kWh is: ", E/1000/3600)
+#print("Energy in kJ is: ", E/1000)
+#print("Energy in kWh is: ", E/1000/3600)
+
+
+data = []
+for case_num in range(0, 3):
+  data.append({
+        'Cooking Time in Hrs': cooking_time/3600,
+        'Energy in kJ': E/1000,
+        'Energy in kWh': E/1000/3600
+    })
+
+
+print(json.dumps(data, indent = 4))
 
 

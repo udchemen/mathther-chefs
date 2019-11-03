@@ -98,7 +98,7 @@ for k in range(len(Fo)):
         s2=0    
 
 theta_eta=np.array(theta_eta)
-
+Temp_eta=[i*(Ti-Ta)+Ta for i in theta_eta] #dimensional Temperature in K
 ######## Energy calculation ######
 E=V*rho*cp*(Tr-Ti) #Total energy consumed
 print("Energy in kJ is: ", E/1000)
@@ -107,29 +107,4 @@ print("Energy in kWh is: ", E/1000/3600)
 
 # print(theta,theta_r)
 print(eigen_values,Bi)
-
-
-# In[233]:
-
-
-theta_eta = np.zeros((len(Fo),len(x_star)))
-s2 = 0
-for k in range(len(Fo)):
-   for i in range(len(x_star)):
-       for j in range(len(eigen_values)):
-           s2=...
-       theta_eta[k,i] = s2
-
-
-# In[222]:
-
-
-f=2*np.sin(9.561532)/(9.561532+np.sin(9.561532)*np.cos(9.561532))
-g=np.exp(-((0.946972)**2)*1.5)
-h=np.cos(3.501085*0.5)
-m=2*np.sin(6.483413)/(6.483413+np.sin(6.483413)*np.cos(6.483413))
-n=np.exp(-((6.483413)**2)*0.6)
-o=np.cos(6.483413*0.5)
-
-print(g)
 

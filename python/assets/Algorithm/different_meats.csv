@@ -1,0 +1,7 @@
+Food Type,thermal_conductivity (W/mK),density (kg/m3),specific_heat (J/kgK)
+beef,0.42,1070,3810
+chicken,0.582,1070,3810
+turkey,0.52,1100,2930
+lamb,0.481,1080,3350
+pork,0.57,1090,3810
+fish,0.431,1050,3390
