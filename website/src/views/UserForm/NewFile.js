@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Card, Col, Form, Row, Spinner } from 'react-bootstrap'
 import './newFile.css'
 
-const NewFile = ({ updateList }) => {
+const NewFile = ({ updateList, setFilePath }) => {
   const [file, setFile] = useState(null)
   const [uploading, setUploading] = useState(false)
   //   const { append } = useContext(FilesContext)
@@ -41,8 +41,10 @@ const NewFile = ({ updateList }) => {
   function handleChange (e) {
     const form = document.getElementById('newFile')
     const data = new FormData(form)
-    data.append('test', 'Hello')
+    const input = document.getElementById('file')
+
     setFile(data.get('file').name)
+    readImage(input, res => setFilePath(res))
 
     return fetch(`/api/analize`, {
       method: 'post',
@@ -60,15 +62,28 @@ const NewFile = ({ updateList }) => {
     //   .catch(handleSubmitError)
   }
 
-  let fileInput
+  function readImage (input, callback) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader()
 
+      reader.onload = e => {
+        if (callback instanceof Function) {
+          callback(e.target.result)
+        }
+      }
+
+      reader.readAsDataURL(input.files[0])
+    }
+  }
+
+  let fileInput
   return (
     <>
       <Row className='mt-4'>
         <Col>
           <Form id='newFile' onSubmit={handleSubmit}>
             <Card
-              className={`new-file bg-transparent text-white ${
+              className={`new-file bg-transparent ${
                 uploading ? 'blocked' : ''
               }`}
               onClick={() => (!uploading ? fileInput.click() : null)}
@@ -85,7 +100,7 @@ const NewFile = ({ updateList }) => {
                     /> */}
                   </>
                 ) : (
-                  'Click here to upload a new file'
+                  'Choose a picture'
                 )}
               </Card.Body>
               <Form.Group controlId='file' className='upload-form d-none'>

@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+
+  --color-dark: #282c34;
+  --color-primary: #004085;
+  --color-light: whitesmoke;
 }
 
 .App-logo {
@@ -7,14 +11,14 @@
 }
 
 .App-header {
-  background-color: #e9ecef;
+  background-color: var(--color-light);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   font-size: calc(10px + 2vmin);
-  color: #282c34;
+  color: var(--color-dark);
 }
 
 .App-link {

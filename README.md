@@ -1,8 +1,7 @@
 # mathther-chefs
-McGill_Physics_Hackathon_project
+2019 McGill Physics Hackathon project
 
 ## Setup Python assets
-
 
 1. Go to the `python/assets/lengthFinder/` directory
 1. Create a folder called `build`

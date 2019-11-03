@@ -5,9 +5,9 @@ const PATH_PYTHON = `${__dirname}/../../../python/`
 
 function callImageAnalizer (req, res, options) {
   var spawn = require('child_process').spawn
-  var process = spawn('python', [
+  var process = spawn('python3', [
     '-u',
-    path.join(PATH_PYTHON, 'hello.py'),
+    path.join(PATH_PYTHON, 'label_score_maker.py'),
     options.filePath
   ])
 

@@ -1,22 +1,21 @@
-import os, io, json
+import io
+import json
+import os
+import sys
+
 from google.cloud import vision
 from google.cloud.vision import types
-from PIL import Image
+
+image_path = sys.argv[1]
 
 #Set Up Credentials
-credential_path = "D:\Adam PC\Documents\Coding Stuffs\Physics Hackathon Montreal 2019\client_secrets.json"
+credential_path = "/Users/Lucas/Apps/Web/mathther-chefs/python/config/google_client_secrets.json"
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
-
-#Find Image Size
-im = Image.open('D:\Adam PC\Desktop\\raw steak.jpg')
-print(im.size)
 
 #Set up Image and Labels
 
 client = vision.ImageAnnotatorClient()
-
-path = 'D:\Adam PC\Desktop\\raw steak.jpg'
-with io.open(path, 'rb') as image_file:
+with io.open(image_path, 'rb') as image_file:
         content = image_file.read()
 image = vision.types.Image(content=content)
 
@@ -35,18 +34,17 @@ for label in labels:
 		label_matches.append(label.description)
 		score_matches.append(str(round(label.score*100, 2)) + "%")
 
-for case_num in range(0, len(label_matches)) : print(label_matches[case_num], score_matches[case_num])
+# for case_num in range(0, len(label_matches)) : print(label_matches[case_num], score_matches[case_num])
 
 
 #write to JSON file
-data={}
-data['options'] = []
+data = []
 
 for case_num in range(0, len(label_matches)):
-	data['options'].append({
-		'label': label_matches[case_num],
-		'score': score_matches[case_num]
-			})
+	data.append({
+        'label': label_matches[case_num],
+        'score': score_matches[case_num]
+    })
 
 
 print(json.dumps(data, indent = 4))
