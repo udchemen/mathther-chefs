@@ -1,6 +1,8 @@
 import os
+
 from PIL import Image
-credential_path = "client_secrets.json"
+
+credential_path = "/Users/Lucas/Apps/Web/mathther-chefs/python/config/google_client_secrets.json"
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
 def corner_finder(path):

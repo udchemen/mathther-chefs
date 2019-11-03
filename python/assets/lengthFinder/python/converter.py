@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-import sys
 import json
+import sys
 
 # print(sys.argv)
 
@@ -12,13 +12,12 @@ width= float(sys.argv[1]) * float(sys.argv[3])
 SurfArea= length*width
 # print(SurfArea)
 
-data = {}
-data['Size'] = []
+data = []
 
-data['Size'].append({
+data.append({
 	'length': length,
 	'width' : width,
-	'SurfaceArea' : SurfArea
+	'surfaceArea' : SurfArea
 	})
 
 print(json.dumps(data,indent=2))
