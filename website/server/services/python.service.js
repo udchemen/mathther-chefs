@@ -21,6 +21,9 @@ const runImageAnalizer = filePath => {
 }
 
 const runFindDimentions = filePath => {
+  // @NOTE Temporary - remove when picture of meet has tag
+  filePath = path.join(PATH_PYTHON, '/assets/lenghtFinder/python/april_tag.jpg')
+
   return new Promise((resolve, reject) => {
     let spawn = require('child_process').spawn
     let program = spawn('bash', [

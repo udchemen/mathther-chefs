@@ -1,14 +1,34 @@
 import React from 'react'
-import { Col, Row } from 'react-bootstrap'
+import { Col, Row, Spinner } from 'react-bootstrap'
+import AnalysisSetup from './AnalysisSetup'
 
-const Analysis = ({ filePath }) => {
+const Analysis = ({
+  filePath,
+  labels = [],
+  loading = true,
+  setAnalysisData
+}) => {
+  //   labels = [{ label: 'param1', value: 1 }, { label: 'param2', value: 1 }]
+
   return (
     <>
       <hr className='my-5' />
       <Row>
-        <Col>
-          {filePath && <img src={filePath} style={{ maxHeight: '400px' }} />}
-          <p>Hello</p>
+        <Col xs={12} md={6} className='mb-3'>
+          {filePath && (
+            <img
+              src={filePath}
+              className='rounded shadow'
+              style={{ maxHeight: '400px', width: '100%' }}
+            />
+          )}
+        </Col>
+        <Col xs={12} md={6} className='mb-3'>
+          {!labels.length ? (
+            <Spinner animation='grow' variant='info' />
+          ) : (
+            <AnalysisSetup labels={labels} setAnalysisData={setAnalysisData} />
+          )}
         </Col>
       </Row>
     </>

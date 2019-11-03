@@ -7,11 +7,24 @@ import './userForm.css'
 const Form = ({ onclick }) => {
   const [filePath, setFilePath] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [analysisData, setAnalysisData] = useState(null)
+  const [labels, setLabels] = useState([])
 
   return (
     <Container>
-      <NewFile setFilePath={setFilePath} />
-      {filePath && <Analysis filePath={filePath} />}
+      <NewFile
+        setFilePath={setFilePath}
+        setLabels={setLabels}
+        setLoading={setLoading}
+      />
+      {filePath && (
+        <Analysis
+          filePath={filePath}
+          loading={loading}
+          labels={labels}
+          setAnalysisData={setAnalysisData}
+        />
+      )}
     </Container>
   )
 }

@@ -7,10 +7,10 @@ from google.cloud import vision
 from google.cloud.vision import types
 
 #Set Up Credentials
-# credential_path = "/Users/Lucas/Apps/Web/mathther-chefs/python/config/google_client_secrets.json"
-dirname = os.path.dirname(__file__)
-credential_path = os.path.join(dirname, '../config/google_client_secrets.json')
-credential_path = os.path.abspath(credential_path)
+credential_path = "/Users/Lucas/Apps/Web/mathther-chefs/python/config/google_client_secrets.json"
+# dirname = os.path.dirname(__file__)
+# credential_path = os.path.join(dirname, '../config/google_client_secrets.json')
+# credential_path = os.path.abspath(credential_path)
 
 image_path = sys.argv[1]
 
